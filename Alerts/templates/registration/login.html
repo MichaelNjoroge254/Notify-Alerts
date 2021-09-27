@@ -1,41 +1,31 @@
-
 {% extends 'registration/base.html' %}
+<!-- bootstrap -->
 {% load bootstrap4 %}
-{% block content %}
-<div class="container ">
-  <div class="row">
-    <!-- Empty div -->
-    <div class="col-md-4"></div>
-    <div class="col-md-4 registration p-3">
-      {% if form.errors %}
-        <p> Password or Username is incorrect </p>
-      {% endif %}
-      <div class="panel panel-default">
+<!-- content -->
+{% block content %} {% load static %}
+<div class="container mt-5">
+  <div class="text-center login">
+    <img src="../../static/images/awwwards.jpg" alt="" />
+  </div>
+  <div class="form">
+    <p class="text-center h4">
+      <b> Login </b>
+    </p>
+    <form action="" method="post" novalidate>
+      {%csrf_token%} {% bootstrap_form form %}
+      <button type="submit" class="btn btn-primary btn-lg mx-auto">
+        <span href="{% url 'main:home' %}" class="mx-auto mb-3">Log In </span>
+      </button>
+    </form>
 
-        <div class="panel-heading">
-          <h3 class="text-center">Sign In</h3>
-        </div>
-        <div class="panel-body">
-
-          <form  action="/accounts/login/" method="post">
-            {% csrf_token %}
-            {% bootstrap_form form%}
-
-            <div class="form-group">
-              <input type="submit" class="btn btn-primary btn-sm" value="Login">
-            </div>
-
-            <input type="hidden" name="next" value="{{next}}">
-
-          </form>
-
-        </div>
-
-      </div>
-      <p>Don't have an Account? <a href="/accounts/register">Join Us</a></p>
+    <div class="password text-center mt-3">
+      <a href="/accounts/password_reset/" class="mx-auto mb-3">Forgot password? </a>
     </div>
-    <!-- empty div -->
-    <div class="col-md-4"></div>
+    <hr />
+    <div class="reg-link text-center">
+      Don't have an account?
+      <a href="{% url 'main:signup' %}">Sign up</a>
+    </div>
   </div>
 </div>
 
