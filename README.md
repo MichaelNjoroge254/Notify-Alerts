@@ -19,7 +19,7 @@ A web application that allows you to be in the loop about everything happening i
 
 ### Requirements
 
-- Python3.6 or a later version
+- Python3.8 or a later version
 
 #### Cloning
 
