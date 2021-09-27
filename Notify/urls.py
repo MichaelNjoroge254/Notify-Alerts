@@ -16,10 +16,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include
+from django_registration.backends.one_step.views import RegistrationView
+from django.contrib.auth.views import LoginView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('Alerts.urls')),
+    path('accounts/register/',
+        RegistrationView.as_view(success_url='/accounts/login'),
+        name='django_registration_register'),
+    path('accounts/login/',LoginView.as_view(template_name='registration/login.html')),
+    
     path('accounts/', include('registration.backends.simple.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
 ]
