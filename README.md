@@ -38,7 +38,7 @@ A web application that allows you to be in the loop about everything happening i
 - `python3.8 -m pip install -r requirements.txt`
 
 3. Running the application
-- `python3.6 manage.py runserver`
+- `python3.8 manage.py runserver`
 
 ## Behavior Driven Development
 
