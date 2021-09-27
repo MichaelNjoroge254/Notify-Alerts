@@ -24,8 +24,8 @@ A web application that allows you to be in the loop about everything happening i
 #### Cloning
 
 - Open the terminal/command prompt
-- `git clone https://github.com/DerrickOdhiambo/Neighbourhood.git`
-- `cd P-Awards`
+- `git clone https://github.com/MichaelNjoroge254/Notify-Alerts.git
+- `cd Notify-Alerts`
 - `code` or open through your preferred editor.
 
 #### Running the application
