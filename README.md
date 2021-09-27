@@ -35,7 +35,7 @@ A web application that allows you to be in the loop about everything happening i
 - `source virtual/bin/activate` to activate virtual environment
 
 2. Install all the required dependancies
-- `python3.6 -m pip install -r requirements.txt`
+- `python3.8 -m pip install -r requirements.txt`
 
 3. Running the application
 - `python3.6 manage.py runserver`
