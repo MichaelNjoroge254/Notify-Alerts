@@ -31,7 +31,7 @@ A web application that allows you to be in the loop about everything happening i
 #### Running the application
 
 1. Set Up the virtual environment
-- `python3.6 -m venv --without-pip virtual` to install the virtual environment
+- `python3.8 -m venv --without-pip virtual` to install the virtual environment
 - `source virtual/bin/activate` to activate virtual environment
 
 2. Install all the required dependancies
