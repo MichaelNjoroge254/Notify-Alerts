@@ -61,7 +61,7 @@ A web application that allows you to be in the loop about everything happening i
 
 ## Contact Information
 
-Email: odhiamboderrick56@gmail.com
+Email: michael.njoroge@student.moringaschool.com
 
 ## License
 
