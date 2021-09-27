@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Postii, Business, Neighborhood, Profile
 from django.contrib.auth.models import User
+from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 from .forms import UserForm, ProfileForm, BusinessForm, PostiiForm
 from django.contrib import messages
@@ -25,6 +26,26 @@ def index(request):
             'stories': stories,
         }
         return render(request, 'index.html', params)
+
+
+def signup_view(request):
+    date = dt.date.today()
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password1')
+            name=form.cleaned_data['fullname']
+            email=form.cleaned_data['email']
+            send_welcome_email(name,email,date)
+            user = authenticate(username=username, password=password)
+            login(request, user)
+            return redirect('main:home')
+    else:
+        form = SignUpForm()
+    return render(request, 'registration/signup.html', {'form': form})
+
 
 
 @login_required(login_url='/accounts/login/')
