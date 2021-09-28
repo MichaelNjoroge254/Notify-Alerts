@@ -7,7 +7,7 @@ from .forms import UserForm, ProfileForm, BusinessForm, PostiiForm
 from django.contrib import messages
 from django.http import JsonResponse
 
-@login_required(login_url='/accounts/login/')
+@login_required(login_url='/')
 def index(request):
     if request.user.profile.neighborhood == None:
         messages.success(request, 'Please fillout you Neighbourhood')
@@ -41,10 +41,10 @@ def signup_view(request):
             send_welcome_email(name,email,date)
             user = authenticate(username=username, password=password)
             login(request, user)
-            return redirect('main:home')
+            return redirect('home')
     else:
         form = SignUpForm()
-    return render(request, 'registration/signup.html', {'form': form})
+    return render(request, 'registration/registration_form.html', {'form': form})
 
 
 
