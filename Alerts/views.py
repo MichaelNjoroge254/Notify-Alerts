@@ -7,7 +7,8 @@ from .forms import UserForm, ProfileForm, BusinessForm, PostiiForm
 from django.contrib import messages
 from django.http import JsonResponse
 
-@login_required(login_url='/')
+
+@login_required(login_url='accounts/login/')
 def index(request):
     if request.user.profile.neighborhood == None:
         messages.success(request, 'Please fillout you Neighbourhood')
@@ -28,6 +29,7 @@ def index(request):
         return render(request, 'index.html', params)
 
 
+@login_required(login_url='accounts/login/')
 def signup_view(request):
     date = dt.date.today()
     if request.method == 'POST':
@@ -41,14 +43,14 @@ def signup_view(request):
             send_welcome_email(name,email,date)
             user = authenticate(username=username, password=password)
             login(request, user)
-            return redirect('home')
+            return redirect('uprofile')
     else:
         form = SignUpForm()
     return render(request, 'registration/registration_form.html', {'form': form})
 
 
 
-@login_required(login_url='/accounts/login/')
+# @login_required(login_url='/accounts/login/')
 def profile(request):
     print(request.GET)
     if request.method == 'POST':
@@ -107,7 +109,7 @@ def search(request):
         searchresults = Business.searchbusiness(search_term)
         return render(request, 'search.html', {'searchresults': searchresults, 'search_term': search_term})
     else:
-        return redirect('home')
+        return redirect('uprofile')
 
 def searchajax(request):
     search_term = request.GET.get('search')
